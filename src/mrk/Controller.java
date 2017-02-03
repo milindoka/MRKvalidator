@@ -3,11 +3,25 @@ package mrk;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 public class Controller {
 
     private Model model;
     private View view;
     private ActionListener actionListener;
+    
+    
+    
+///////////////Temp Functions For Debugging    
+    public void show(String msg) ///for debugging
+	{JOptionPane.showMessageDialog(null, msg);}
+    
+    public void show(int msg)
+	{JOptionPane.showMessageDialog(null, msg);}
+
+//////////////////////////////////////////////////
+    
     
     public Controller(Model model, View view)
     {
@@ -19,19 +33,21 @@ public class Controller {
          System.out.println(TotalFiles);                 
     }
     
-    public void contol()
+    public void LinkViewControls()
     {        
         actionListener = new ActionListener()
         {
-              public void actionPerformed(ActionEvent actionEvent) {                  
-                  linkBtnAndLabel();
+              public void actionPerformed(ActionEvent actionEvent) 
+              {                  
+                  OnButtonValidate();
               }
         };                
         view.getButton().addActionListener(actionListener);   
     }
     
-    private void linkBtnAndLabel(){
+    private void OnButtonValidate()
+    {
         model.incX();                
-        view.setText(Integer.toString(model.getX()));
+        view.setText(model.getX());
     }    
 }

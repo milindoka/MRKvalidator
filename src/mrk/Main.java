@@ -13,7 +13,7 @@ public class Main
             	Model model = new Model(0);
             	View view = new View("-"); 
             	Controller controller = new Controller(model,view);
-            	controller.contol();
+            	controller.LinkViewControls();
             }
         });  
     }

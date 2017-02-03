@@ -9,6 +9,7 @@ public class Model {
     private int x;
     private String JarFilepath;
     private ArrayList<String> pathArray = new ArrayList<String>(); //array containing full paths
+   
     public Model()
     {
         x = 0;
