@@ -9,14 +9,14 @@ public class Controller {
     private View view;
     private ActionListener actionListener;
     
-    public Controller(Model model, View view){
+    public Controller(Model model, View view)
+    {
         this.model = model;
         this.view = view;
-       // String path;
-     
-	     System.out.println(model.getJarPath()); ///set JAR path in model variable path;
-
-                          
+         String JarFilePath=model.getJarPath();
+	     int TotalFiles=model.GetAllFiles(JarFilePath);
+         System.out.println(JarFilePath);
+         System.out.println(TotalFiles);                 
     }
     
     public void contol()
