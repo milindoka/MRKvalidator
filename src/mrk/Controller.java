@@ -10,7 +10,7 @@ public class Controller {
     private Model model;
     private View view;
     private ActionListener actionListener;
-    
+    private int TotalFiles=0;
     
     
 ///////////////Temp Functions For Debugging    
@@ -28,9 +28,11 @@ public class Controller {
         this.model = model;
         this.view = view;
          String JarFilePath=model.getJarPath();
-	     int TotalFiles=model.GetAllFiles(JarFilePath);
-         System.out.println(JarFilePath);
-         System.out.println(TotalFiles);                 
+	     TotalFiles=model.GetAllFiles(JarFilePath);
+         view.SetUpperBound(TotalFiles-1);
+	     System.out.println(JarFilePath);
+         System.out.println(TotalFiles);
+         
     }
     
     public void LinkViewControls()
@@ -45,9 +47,17 @@ public class Controller {
         view.getButton().addActionListener(actionListener);   
     }
     
+    
     private void OnButtonValidate()
-    {
-        model.incX();                
-        view.setText(model.getX());
-    }    
+    {   int currentfileindex=model.getX();
+        if(currentfileindex<TotalFiles) Validate(currentfileindex);
+    }
+    
+    private void Validate(int currentfileindex)
+    {String fnem=model.getFileName(currentfileindex);
+     view.setCurrentFileName(fnem);
+     view.setProgressBarPercent(currentfileindex);
+     model.incX();
+    	
+    }
 }

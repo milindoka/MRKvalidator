@@ -14,7 +14,7 @@ public class View {
 
     
     public View(String text){
-        frame = new JFrame("View");                                    
+        frame = new JFrame("MRKvalidator");                                    
         frame.getContentPane().setLayout(new BorderLayout());                                          
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);           
         frame.setSize(250,150);
@@ -44,10 +44,20 @@ public class View {
         return buttonValidate;
     }
     
-    public void setText(int percent){
+    
+    public void setProgressBarPercent(int percent)
+    {
         //label.setText(text);
         jb.setValue(percent);
     }
+    public void setCurrentFileName(String fnem)
+    {
+    	label.setText(fnem);
+    }
     
+    public void SetUpperBound(int bound)
+    {
+    	jb.setMaximum(bound);
+    }
     
 }

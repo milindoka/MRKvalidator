@@ -9,6 +9,7 @@ public class Model {
     private int x;
     private String JarFilepath;
     private ArrayList<String> pathArray = new ArrayList<String>(); //array containing full paths
+    private  ArrayList<String> nameArray = new ArrayList<String>(); //array containing file names only
    
     public Model()
     {
@@ -28,6 +29,9 @@ public class Model {
         return x;
     }
     
+    public void setX(int x){
+        this.x= x;
+    }
     public String getJarPath()
     {
     	File f = new File(System.getProperty("java.class.path"));
@@ -50,14 +54,14 @@ public class Model {
 		};
   	  
   	  pathArray.removeAll(pathArray);
-  	 
+  	  nameArray.removeAll(nameArray);
   	  File folder = new File(path);
   	  File[] listOfFiles = folder.listFiles(mrkFilter);
   	      for (int i = 0; i < listOfFiles.length; i++) {
   	        if (listOfFiles[i].isFile()) 
   	        {  
   	           pathArray.add(listOfFiles[i].getAbsolutePath());
-  	           
+  	           nameArray.add(listOfFiles[i].getName());
   	           
   	         } 
   	      }
@@ -66,7 +70,10 @@ public class Model {
     }
 
     
-    
+    public String getFileName(int index)
+    {   String temp=(String) nameArray.get(index);
+    	return temp;
+    }
     
     
 }
