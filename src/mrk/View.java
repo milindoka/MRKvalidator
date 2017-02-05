@@ -17,7 +17,7 @@ public class View {
     private JTextField SubField;
     private JButton btnNewButton;
     private JLabel lblNewLabel;
-    private JLabel lblNewLabel_1;
+    private JLabel Status;
 
     
     public View(String text){
@@ -55,8 +55,8 @@ public class View {
         label = new JLabel(text);
         frame.getContentPane().add(label);
         
-        lblNewLabel_1 = new JLabel("New label");
-        frame.getContentPane().add(lblNewLabel_1);
+        Status = new JLabel("Status");
+        frame.getContentPane().add(Status);
         
         buttonValidate = new JButton("Validate");        
         frame.getContentPane().add(buttonValidate);   
@@ -75,12 +75,16 @@ public class View {
     
     public void setProgressBarPercent(int percent)
     {
-        //label.setText(text);
+      
         jb.setValue(percent);
     }
-    public void setCurrentFileName(String fnem)
+    public void UpdateFromModel(String fnem,String Division,String Examination,String Subject)
     {
     	label.setText(fnem);
+    	DivField.setText(Division);
+    	ExamField.setText(Examination);
+    	SubField.setText(Subject);
+    	
     }
     
     public void SetUpperBound(int bound)

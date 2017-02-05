@@ -2,7 +2,6 @@ package mrk;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
 
 public class Controller {
@@ -51,19 +50,17 @@ public class Controller {
     private void OnButtonValidate()
     {   int currentfileindex=model.getX();
         if(currentfileindex<TotalFiles) Validate(currentfileindex);
-        else model.setX(0);
+        else model.setX(0);  ////back to start
     }
     
     private void Validate(int currentfileindex)
-    {String fnem=model.getFileName(currentfileindex);
-     model.LoadFile(currentfileindex);
-     model.ExtractAllHeaderFields();
-     model.getDivision();
-     
-     view.setCurrentFileName(fnem);
+    {
+     model.LoadMarkListFileToStrArray(currentfileindex);
+     model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
+     model.CheckOneTwoThreeFormat();
+     view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub());
      view.setProgressBarPercent(currentfileindex);
      model.incX();
-     
-    	
+     	
     }
 }
