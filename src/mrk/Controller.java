@@ -51,13 +51,19 @@ public class Controller {
     private void OnButtonValidate()
     {   int currentfileindex=model.getX();
         if(currentfileindex<TotalFiles) Validate(currentfileindex);
+        else model.setX(0);
     }
     
     private void Validate(int currentfileindex)
     {String fnem=model.getFileName(currentfileindex);
+     model.LoadFile(currentfileindex);
+     model.ExtractAllHeaderFields();
+     model.getDivision();
+     
      view.setCurrentFileName(fnem);
      view.setProgressBarPercent(currentfileindex);
      model.incX();
+     
     	
     }
 }

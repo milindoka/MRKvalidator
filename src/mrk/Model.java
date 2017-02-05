@@ -75,5 +75,19 @@ public class Model {
     	return temp;
     }
     
+    public String getDivision()
+    {
+    	return "Division";
+    }
+    
+    public void LoadFile(int currentindex)
+    {
+    	
+    }
+    public void ExtractAllHeaderFields()
+    {
+    	
+    }
+    
     
 }

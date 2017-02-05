@@ -12,9 +12,9 @@ public class View {
     private JLabel label;
     private JButton buttonValidate;
     private JProgressBar jb;
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField textField_2;
+    private JTextField DivField;
+    private JTextField ExamField;
+    private JTextField SubField;
     private JButton btnNewButton;
     private JLabel lblNewLabel;
     private JLabel lblNewLabel_1;
@@ -38,17 +38,17 @@ public class View {
         lblNewLabel = new JLabel("New label");
         frame.getContentPane().add(lblNewLabel);
         
-        textField = new JTextField();
-        frame.getContentPane().add(textField);
-        textField.setColumns(10);
+        DivField = new JTextField();
+        frame.getContentPane().add(DivField);
+        DivField.setColumns(10);
         
-        textField_1 = new JTextField();
-        frame.getContentPane().add(textField_1);
-        textField_1.setColumns(10);
+        ExamField = new JTextField();
+        frame.getContentPane().add(ExamField);
+        ExamField.setColumns(10);
         
-        textField_2 = new JTextField();
-        frame.getContentPane().add(textField_2);
-        textField_2.setColumns(10);
+        SubField = new JTextField();
+        frame.getContentPane().add(SubField);
+        SubField.setColumns(10);
 
         
         
