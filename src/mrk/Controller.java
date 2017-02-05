@@ -57,8 +57,8 @@ public class Controller {
     {
      model.LoadMarkListFileToStrArray(currentfileindex);
      model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
-     model.CheckOneTwoThreeFormat();
-     view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub());
+     String Status=model.CheckOneTwoThreeFormat();
+     view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
      view.setProgressBarPercent(currentfileindex);
      model.incX();
      	

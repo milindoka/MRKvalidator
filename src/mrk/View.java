@@ -78,13 +78,13 @@ public class View {
       
         jb.setValue(percent);
     }
-    public void UpdateFromModel(String fnem,String Division,String Examination,String Subject)
+    public void UpdateFromModel(String fnem,String Division,String Examination,String Subject,String stetus)
     {
     	label.setText(fnem);
     	DivField.setText(Division);
     	ExamField.setText(Examination);
     	SubField.setText(Subject);
-    	
+    	Status.setText(stetus);
     }
     
     public void SetUpperBound(int bound)

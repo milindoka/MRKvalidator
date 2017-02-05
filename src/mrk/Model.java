@@ -18,24 +18,16 @@ public class Model {
     private ArrayList<String> nameArray = new ArrayList<String>(); //array containing file names only
     private ArrayList<String> strArray = new ArrayList<String>(); //array containing file names only
     
-    private Set<String> DivSet = new HashSet<>();
-    private Set<String> ExamSet = new HashSet<>();
-    private Set<String> SubjectSet = new HashSet<>();
-    private  String Order[]={"ENG","MAR","TAM","HIN","ITE","MAT","PHY","CHE","BIO","SEP","ECO","BKE","OCM","CS1","CS2","EL1","EL2","EVS","PTE"};
+    private String DIV[]={"A","B","C","D","E","F","G","H","I","J","K","L"};
+    private  String EXAM[]={"U1","T1","U2","T2"};
+    private  String SUBJECT[]={"ENG","MAR","TAM","HIN","ITE","MAT","PHY","CHE","BIO","SEP","ECO","BKE","OCM","CS1","CS2","EL1","EL2","EVS","PTE"};
+    
     
     private String Division,Examination, Subject, Examiner;
     
     public Model()
     {
         x = 0;
-        ///Initialize Division Set
-        for(char alphabet = 'A'; alphabet <= 'L';alphabet++) DivSet.add(String.valueOf(alphabet));   
-        
-       ///Initialize Exam Set 
-        ExamSet.add("U1");ExamSet.add("T1"); ExamSet.add("U2"); ExamSet.add("T2");
-        
-       ///Initialize Subject Set
-        for(int i=0;i<Order.length;i++) SubjectSet.add(Order[i]);
         
     }
     
@@ -151,9 +143,26 @@ public class Model {
     	
     }
     
-    public void CheckOneTwoThreeFormat()
-    {
-    	
+    public String CheckOneTwoThreeFormat()
+    { boolean found=false;
+      for(int i=0;i<DIV.length;i++) 
+      if(DIV[i].equals(Division)) found=true;
+      
+      if(!found) return "Rectify";
+      
+      found=false;
+      for(int i=0;i<EXAM.length;i++) 
+          if(EXAM[i].equals(Examination)) found=true;
+      
+      if(!found) return "Rectify";
+        	
+      found=false;
+      for(int i=0;i<SUBJECT.length;i++) 
+          if(SUBJECT[i].equals(Subject)) found=true;
+      
+      if(!found) return "Rectify";
+        	
+      return "Ok";
     }
     
     
