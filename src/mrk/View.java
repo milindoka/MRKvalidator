@@ -9,14 +9,14 @@ import java.awt.GridLayout;
 public class View {
       
     private JFrame frame;
-    private JLabel label;
-    private JButton buttonValidate;
+    private JLabel FileNameLabel;
+    private JButton btnValidate;
     private JProgressBar jb;
     private JTextField DivField;
     private JTextField ExamField;
     private JTextField SubField;
-    private JButton btnNewButton;
-    private JLabel lblNewLabel;
+    private JButton btnContinue;
+    private JLabel BlankLabel1;
     private JLabel Status;
 
     
@@ -35,8 +35,8 @@ public class View {
         
         frame.getContentPane().add(jb);    
         
-        lblNewLabel = new JLabel("New label");
-        frame.getContentPane().add(lblNewLabel);
+        BlankLabel1 = new JLabel(" ");
+        frame.getContentPane().add(BlankLabel1);
         
         DivField = new JTextField();
         frame.getContentPane().add(DivField);
@@ -49,27 +49,36 @@ public class View {
         SubField = new JTextField();
         frame.getContentPane().add(SubField);
         SubField.setColumns(10);
+        
+        btnContinue = new JButton("Continue");
+        frame.getContentPane().add(btnContinue);
 
         
         
-        label = new JLabel(text);
-        frame.getContentPane().add(label);
+        FileNameLabel = new JLabel(" ");
+        frame.getContentPane().add(FileNameLabel);
         
         Status = new JLabel("Status");
         frame.getContentPane().add(Status);
         
-        buttonValidate = new JButton("Validate");        
-        frame.getContentPane().add(buttonValidate);   
-        
-        btnNewButton = new JButton("New button");
-        frame.getContentPane().add(btnNewButton);
+        btnValidate = new JButton("Validate");        
+        frame.getContentPane().add(btnValidate);   
         
         
         
     }
-        
-    public JButton getButton(){
-        return buttonValidate;
+
+    public String getDivision() {return DivField.getText();}
+    public String getExam() {return ExamField.getText();}
+    public String getSubject() {return SubField.getText();}
+    
+    
+    public JButton getValidateButton(){
+        return btnValidate;
+    }
+    
+    public JButton getContinueButton(){
+        return btnContinue;
     }
     
     
@@ -80,14 +89,14 @@ public class View {
     }
     public void UpdateFromModel(String fnem,String Division,String Examination,String Subject,String stetus)
     {
-    	label.setText(fnem);
+    	FileNameLabel.setText(fnem);
     	DivField.setText(Division);
     	ExamField.setText(Examination);
     	SubField.setText(Subject);
     	Status.setText(stetus);
     }
     
-    public void SetUpperBound(int bound)
+    public void SetProgressBarUpperBound(int bound)
     {
     	jb.setMaximum(bound);
     }

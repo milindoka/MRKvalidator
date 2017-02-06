@@ -44,9 +44,19 @@ public class Model {
         return x;
     }
     
+    
     public void setX(int x){
         this.x= x;
     }
+    
+    
+    public String getDiv()  { 	return Division;   }
+    public String getExam()  { 	return Examination;   }
+    public String getSub()  { 	return Subject;   }
+    
+    public void setThreeValues(String div,String exa, String sub)
+    {this.Division=div; this.Examination=exa;this.Subject=sub;}
+    
     public String getJarPath()
     {
     	File f = new File(System.getProperty("java.class.path"));
@@ -90,9 +100,6 @@ public class Model {
     	return temp;
     }
     
-    public String getDiv()  { 	return Division;   }
-    public String getExam()  { 	return Examination;   }
-    public String getSub()  { 	return Subject;   }
     
     
     public void LoadMarkListFileToStrArray(int currentindex)
@@ -143,26 +150,26 @@ public class Model {
     	
     }
     
-    public String CheckOneTwoThreeFormat()
+    public boolean InOneTwoThreeFormat()
     { boolean found=false;
       for(int i=0;i<DIV.length;i++) 
       if(DIV[i].equals(Division)) found=true;
       
-      if(!found) return "Rectify";
+      if(!found) return false;
       
       found=false;
       for(int i=0;i<EXAM.length;i++) 
           if(EXAM[i].equals(Examination)) found=true;
       
-      if(!found) return "Rectify";
+      if(!found) return false;
         	
       found=false;
       for(int i=0;i<SUBJECT.length;i++) 
           if(SUBJECT[i].equals(Subject)) found=true;
       
-      if(!found) return "Rectify";
+     // if(!found) return false;
         	
-      return "Ok";
+      return found;
     }
     
     

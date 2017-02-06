@@ -8,7 +8,7 @@ public class Controller {
 
     private Model model;
     private View view;
-    private ActionListener actionListener;
+    private ActionListener onbtnValidate,onbtnContinue;
     private int TotalFiles=0;
     
     
@@ -28,7 +28,7 @@ public class Controller {
         this.view = view;
          String JarFilePath=model.getJarPath();
 	     TotalFiles=model.GetAllFiles(JarFilePath);
-         view.SetUpperBound(TotalFiles-1);
+         view.SetProgressBarUpperBound(TotalFiles-1);
 	     System.out.println(JarFilePath);
          System.out.println(TotalFiles);
          
@@ -36,14 +36,35 @@ public class Controller {
     
     public void LinkViewControls()
     {        
-        actionListener = new ActionListener()
+        onbtnValidate = new ActionListener()
         {
               public void actionPerformed(ActionEvent actionEvent) 
               {                  
                   OnButtonValidate();
               }
         };                
-        view.getButton().addActionListener(actionListener);   
+        view.getValidateButton().addActionListener(onbtnValidate);   
+        
+        onbtnContinue = new ActionListener()
+        {
+              public void actionPerformed(ActionEvent actionEvent) 
+              {                  
+                  OnButtonContinue();
+              }
+        };                
+        view.getValidateButton().addActionListener(onbtnContinue);   
+        
+        
+    }
+    
+    
+    private void OnButtonContinue()
+    {String div,exa,sub;
+     div=view.getDivision();
+     exa=view.getExam();
+     sub=view.getSubject();
+     model.setThreeValues(div, exa, sub);	
+     
     }
     
     
@@ -54,10 +75,10 @@ public class Controller {
     }
     
     private void Validate(int currentfileindex)
-    {
+    {String Status;
      model.LoadMarkListFileToStrArray(currentfileindex);
      model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
-     String Status=model.CheckOneTwoThreeFormat();
+     if(model.InOneTwoThreeFormat()) Status="Status : Ok"; else Status="Status : Rectify and Continue";
      view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
      view.setProgressBarPercent(currentfileindex);
      model.incX();
