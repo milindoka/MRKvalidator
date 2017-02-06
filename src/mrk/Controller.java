@@ -64,7 +64,8 @@ public class Controller {
      exa=view.getExam();
      sub=view.getSubject();
      model.setThreeValues(div, exa, sub);	
-     if(model.InOneTwoThreeFormat()) {model.incX(); OnButtonValidate();}
+     if(model.InOneTwoThreeFormat()) 
+      {model.incX(); OnButtonValidate();}
      
     }
     

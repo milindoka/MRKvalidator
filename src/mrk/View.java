@@ -5,6 +5,8 @@ import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class View {
       
@@ -41,14 +43,43 @@ public class View {
         DivField = new JTextField();
         frame.getContentPane().add(DivField);
         DivField.setColumns(10);
+        DivField.addKeyListener(new KeyAdapter()
+        { public void keyTyped(KeyEvent e) {
+	            char keyChar = e.getKeyChar();
+	            if (Character.isLowerCase(keyChar)) {
+	              e.setKeyChar(Character.toUpperCase(keyChar));
+	            }
+	          }
+        });
+        
+        
         
         ExamField = new JTextField();
         frame.getContentPane().add(ExamField);
         ExamField.setColumns(10);
+        ExamField.addKeyListener(new KeyAdapter()
+        { public void keyTyped(KeyEvent e) {
+	            char keyChar = e.getKeyChar();
+	            if (Character.isLowerCase(keyChar)) {
+	              e.setKeyChar(Character.toUpperCase(keyChar));
+	            }
+	          }
+        });
+        
+        
         
         SubField = new JTextField();
         frame.getContentPane().add(SubField);
         SubField.setColumns(10);
+        SubField.addKeyListener(new KeyAdapter()
+        { public void keyTyped(KeyEvent e) {
+	            char keyChar = e.getKeyChar();
+	            if (Character.isLowerCase(keyChar)) {
+	              e.setKeyChar(Character.toUpperCase(keyChar));
+	            }
+	          }
+        });
+        
         
         btnContinue = new JButton("Continue");
         frame.getContentPane().add(btnContinue);
