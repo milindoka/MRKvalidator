@@ -52,7 +52,7 @@ public class Controller {
                   OnButtonContinue();
               }
         };                
-        view.getValidateButton().addActionListener(onbtnContinue);   
+        view.getContinueButton().addActionListener(onbtnContinue);   
         
         
     }
@@ -64,6 +64,7 @@ public class Controller {
      exa=view.getExam();
      sub=view.getSubject();
      model.setThreeValues(div, exa, sub);	
+     if(model.InOneTwoThreeFormat()) {model.incX(); OnButtonValidate();}
      
     }
     
@@ -78,10 +79,11 @@ public class Controller {
     {String Status;
      model.LoadMarkListFileToStrArray(currentfileindex);
      model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
-     if(model.InOneTwoThreeFormat()) Status="Status : Ok"; else Status="Status : Rectify and Continue";
+     if(model.InOneTwoThreeFormat()) { Status="Status : Ok"; model.incX();}
+     else Status="Status : Rectify and Continue";
+     
      view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
      view.setProgressBarPercent(currentfileindex);
-     model.incX();
      	
     }
 }
