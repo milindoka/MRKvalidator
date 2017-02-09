@@ -4,24 +4,25 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Model {
     private int TotalMarklists;
+    private int TotalSets;
     private int x;
     private String JarFilepath;
     private ArrayList<String> pathArray = new ArrayList<String>(); //array containing full paths
     private ArrayList<String> nameArray = new ArrayList<String>(); //array containing file names only
-    private ArrayList<String> strArray = new ArrayList<String>(); //array containing file names only
+    private ArrayList<String> strArray = new ArrayList<String>(); //array containing marklist data
     
     private String DIV[]={"A","B","C","D","E","F","G","H","I","J","K","L"};
     private  String EXAM[]={"U1","T1","U2","T2"};
     private  String SUBJECT[]={"ENG","MAR","TAM","HIN","ITE","MAT","PHY","CHE","BIO","SEP","ECO","BKE","OCM","CS1","CS2","EL1","EL2","EVS","PTE"};
     
+    private boolean FormatOk;
     
     private String Division,Examination, Subject, Examiner;
     
@@ -55,7 +56,10 @@ public class Model {
     public String getSub()  { 	return Subject;   }
     
     public void setThreeValues(String div,String exa, String sub)
-    {this.Division=div; this.Examination=exa;this.Subject=sub;}
+    {this.Division=div; this.Examination=exa;this.Subject=sub;
+    
+	
+    }
     
     public String getJarPath()
     {
@@ -151,25 +155,47 @@ public class Model {
     }
     
     public boolean InOneTwoThreeFormat()
-    { boolean found=false;
+    { FormatOk=false;
       for(int i=0;i<DIV.length;i++) 
-      if(DIV[i].equals(Division)) found=true;
+      if(DIV[i].equals(Division)) FormatOk=true;
       
-      if(!found) return false;
+      if(!FormatOk) return false;
       
-      found=false;
+      FormatOk=false;
       for(int i=0;i<EXAM.length;i++) 
-          if(EXAM[i].equals(Examination)) found=true;
+          if(EXAM[i].equals(Examination)) FormatOk=true;
       
-      if(!found) return false;
+      if(!FormatOk) return false;
         	
-      found=false;
+      FormatOk=false;
       for(int i=0;i<SUBJECT.length;i++) 
-          if(SUBJECT[i].equals(Subject)) found=true;
+          if(SUBJECT[i].equals(Subject)) FormatOk=true;
       
      // if(!found) return false;
         	
-      return found;
+      return FormatOk;
+    }
+    
+    public void SaveList() throws IOException
+    {   FileWriter f0=null;
+    	try {f0 = new FileWriter(pathArray.get(x));	} catch (IOException e1) {e1.printStackTrace();	}
+        String newLine = System.getProperty("line.separator");
+        
+        String temp[],stemp;
+	    stemp=strArray.get(7);
+	    temp=stemp.split(":");
+	    int TotalSets=Integer.parseInt(temp[1].replaceAll("[^0-9.]",""));
+        
+        
+        strArray.set(15+3*TotalSets,"Div         :"+Division); 
+    	strArray.set(17+3*TotalSets,"Subject     :"+Subject);
+    	strArray.set(18+3*TotalSets,"Examination :"+Examination);
+    	
+    	for(int i=0;i<strArray.size();i++) 
+    		{f0.write(strArray.get(i));f0.write(newLine);}
+    	
+    	f0.close();
+    	
     }
     
     

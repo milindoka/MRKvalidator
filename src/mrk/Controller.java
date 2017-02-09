@@ -2,6 +2,8 @@ package mrk;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 public class Controller {
@@ -10,6 +12,7 @@ public class Controller {
     private View view;
     private ActionListener onbtnValidate,onbtnContinue;
     private int TotalFiles=0;
+   
     
     
 ///////////////Temp Functions For Debugging    
@@ -39,7 +42,7 @@ public class Controller {
         onbtnValidate = new ActionListener()
         {
               public void actionPerformed(ActionEvent actionEvent) 
-              {                  
+              {                
                   OnButtonValidate();
               }
         };                
@@ -65,11 +68,19 @@ public class Controller {
      sub=view.getSubject();
      model.setThreeValues(div, exa, sub);	
      if(model.InOneTwoThreeFormat()) 
-      {model.incX(); OnButtonValidate();}
+      {  try {
+		model.SaveList();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}//save corrected list
+    	 
+    	//  model.incX();
+         OnButtonValidate();
      
     }
     
-    
+    } 
     private void OnButtonValidate()
     {   int currentfileindex=model.getX();
         if(currentfileindex<TotalFiles) Validate(currentfileindex);
