@@ -29,11 +29,10 @@ public class Controller {
     {
         this.model = model;
         this.view = view;
-         String JarFilePath=model.getJarPath();
-	     TotalFiles=model.GetAllFiles(JarFilePath);
-         view.SetProgressBarUpperBound(TotalFiles-1);
-	     System.out.println(JarFilePath);
-         System.out.println(TotalFiles);
+         //String JarFilePath=model.getJarPath();
+	   
+	     //System.out.println(JarFilePath);
+         //System.out.println(TotalFiles);
          
     }
     
@@ -75,7 +74,7 @@ public class Controller {
 		e.printStackTrace();
 	}//save corrected list
     	 
-    	//  model.incX();
+    	 model.incX();
          OnButtonValidate();
      
     }
@@ -84,7 +83,10 @@ public class Controller {
     private void OnButtonValidate()
     {   int currentfileindex=model.getX();
         if(currentfileindex<TotalFiles) Validate(currentfileindex);
-        else model.setX(0);  ////back to start
+        else{ model.setX(0);  ////back to start
+              TotalFiles=model.GetAllFiles();
+               view.SetProgressBarUpperBound(TotalFiles-1);
+             }
     }
     
     private void Validate(int currentfileindex)

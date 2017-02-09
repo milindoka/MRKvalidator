@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Model {
     private int TotalMarklists;
-    private int TotalSets;
+   
     private int x;
     private String JarFilepath;
     private ArrayList<String> pathArray = new ArrayList<String>(); //array containing full paths
@@ -61,16 +61,17 @@ public class Model {
 	
     }
     
-    public String getJarPath()
+    public void getJarPath()
     {
     	File f = new File(System.getProperty("java.class.path"));
      	File dir = f.getAbsoluteFile().getParentFile();
         JarFilepath=dir.toString();
-     	return  JarFilepath;
+     
     }
     
-    public int GetAllFiles(String path)
+    public int GetAllFiles()
     { 
+     getJarPath();
   	  FilenameFilter mrkFilter = new FilenameFilter() {
 			public boolean accept(File dir, String name) {
 				String lowercaseName = name.toLowerCase();
@@ -84,7 +85,7 @@ public class Model {
   	  
   	  pathArray.removeAll(pathArray);
   	  nameArray.removeAll(nameArray);
-  	  File folder = new File(path);
+  	  File folder = new File(JarFilepath);
   	  File[] listOfFiles = folder.listFiles(mrkFilter);
   	      for (int i = 0; i < listOfFiles.length; i++) {
   	        if (listOfFiles[i].isFile()) 
@@ -195,6 +196,16 @@ public class Model {
     		{f0.write(strArray.get(i));f0.write(newLine);}
     	
     	f0.close();
+    	
+    	
+    	 File oldfile = new File(pathArray.get(x));
+         File newfile = new File(JarFilepath+"/"+Division+"-"+Examination+"-"+Subject+"-[Rectified]-"+Examiner+".mrk");
+
+         if(oldfile.renameTo(newfile)) {
+            System.out.println("File name changed succesful");
+         } else {
+            System.out.println("Rename failed");
+         } 
     	
     }
     
