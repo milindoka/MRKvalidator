@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 public class Controller {
 
@@ -36,13 +37,26 @@ public class Controller {
          
     }
     
+    
+    final Timer timer = new Timer(1000, new ActionListener() 
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+        	 
+        	 OnButtonValidate();
+        }
+    });
+
+
+    
     public void LinkViewControls()
     {        
         onbtnValidate = new ActionListener()
         {
               public void actionPerformed(ActionEvent actionEvent) 
               {                
-                  OnButtonValidate();
+                  timer.start();
               }
         };                
         view.getValidateButton().addActionListener(onbtnValidate);   
@@ -76,7 +90,7 @@ public class Controller {
     	 
     	 model.incX();
     	 view.ShowContinueButton(false);
-         OnButtonValidate();
+         timer.start();
      
     }
     
@@ -87,6 +101,7 @@ public class Controller {
         else{ model.setX(0);  ////back to start
               TotalFiles=model.GetAllFiles();
                view.SetProgressBarUpperBound(TotalFiles-1);
+               timer.stop();
              }
     }
     
@@ -95,7 +110,7 @@ public class Controller {
      model.LoadMarkListFileToStrArray(currentfileindex);
      model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
      if(model.InOneTwoThreeFormat()) { Status="Status : Ok"; model.incX();}
-     else { Status="Status : Rectify and Continue"; view.ShowContinueButton(true);}     
+     else { Status="Status : Rectify and Continue"; view.ShowContinueButton(true); timer.stop();}     
      view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
      view.setProgressBarPercent(currentfileindex);
      	
