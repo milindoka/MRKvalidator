@@ -83,7 +83,7 @@ public class View {
         
         btnContinue = new JButton("Continue");
         frame.getContentPane().add(btnContinue);
-
+        btnContinue.setVisible(false);
         
         
         FileNameLabel = new JLabel(" ");
@@ -131,5 +131,11 @@ public class View {
     {
     	jb.setMaximum(bound);
     }
+
+	public void ShowContinueButton(boolean bval) 
+	{btnContinue.setVisible(bval);
+		// TODO Auto-generated method stub
+		
+	}
     
 }

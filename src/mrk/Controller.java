@@ -75,6 +75,7 @@ public class Controller {
 	}//save corrected list
     	 
     	 model.incX();
+    	 view.ShowContinueButton(false);
          OnButtonValidate();
      
     }
@@ -94,8 +95,7 @@ public class Controller {
      model.LoadMarkListFileToStrArray(currentfileindex);
      model.ExtractAllHeaderFields(); ///Div, Exam, Sub, Examiner
      if(model.InOneTwoThreeFormat()) { Status="Status : Ok"; model.incX();}
-     else Status="Status : Rectify and Continue";
-     
+     else { Status="Status : Rectify and Continue"; view.ShowContinueButton(true);}     
      view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
      view.setProgressBarPercent(currentfileindex);
      	
