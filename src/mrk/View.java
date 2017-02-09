@@ -2,8 +2,8 @@ package mrk;
 
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -12,7 +12,7 @@ public class View {
       
     private JFrame frame;
     private JLabel FileNameLabel;
-    private JButton btnValidate;
+    private JButton btnStart;
     private JProgressBar jb;
     private JTextField DivField;
     private JTextField ExamField;
@@ -22,22 +22,28 @@ public class View {
     private JLabel Status;
 
     
-    public View(String text){
+    public View(String text)
+    {
         frame = new JFrame("MRKvalidator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);           
-        frame.setSize(300,250);
+        frame.setSize(400,400);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
         
         jb=new JProgressBar(0,100);    
-        jb.setBounds(40,40,160,30);         
+       Border border = BorderFactory.createTitledBorder("Progress...");
+       
+       jb.setBorder(border);
+       
+        jb.setBounds(60,80,180,90);         
         jb.setValue(0);    
         jb.setStringPainted(true);    
         
         frame.getContentPane().add(jb);    
         
         BlankLabel1 = new JLabel(" ");
+       
         frame.getContentPane().add(BlankLabel1);
         
         DivField = new JTextField();
@@ -92,8 +98,8 @@ public class View {
         Status = new JLabel("Status");
         frame.getContentPane().add(Status);
         
-        btnValidate = new JButton("Validate");        
-        frame.getContentPane().add(btnValidate);   
+        btnStart = new JButton("Start Validation");        
+        frame.getContentPane().add(btnStart);   
         
         
         
@@ -105,7 +111,7 @@ public class View {
     
     
     public JButton getValidateButton(){
-        return btnValidate;
+        return btnStart;
     }
     
     public JButton getContinueButton(){
@@ -134,7 +140,7 @@ public class View {
 
 	public void ShowContinueButton(boolean bval) 
 	{btnContinue.setVisible(bval);
-		// TODO Auto-generated method stub
+	 btnStart.setVisible(!bval);
 		
 	}
     

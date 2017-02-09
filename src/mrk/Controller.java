@@ -11,7 +11,7 @@ public class Controller {
 
     private Model model;
     private View view;
-    private ActionListener onbtnValidate,onbtnContinue;
+    private ActionListener onbtnStart,onbtnContinue;
     private int TotalFiles=0;
    
     
@@ -52,14 +52,21 @@ public class Controller {
     
     public void LinkViewControls()
     {        
-        onbtnValidate = new ActionListener()
+        onbtnStart = new ActionListener()
         {
               public void actionPerformed(ActionEvent actionEvent) 
-              {                
+              {   model.setX(0);  ////Start from index 0
+                  TotalFiles=model.GetAllFiles();
+                  view.SetProgressBarUpperBound(TotalFiles-1);  
+                  view.ShowContinueButton(false);
+                  
                   timer.start();
+                  view.getValidateButton().setVisible(false);
+                  
               }
         };                
-        view.getValidateButton().addActionListener(onbtnValidate);   
+        view.getValidateButton().addActionListener(onbtnStart);  
+        
         
         onbtnContinue = new ActionListener()
         {
@@ -67,7 +74,8 @@ public class Controller {
               {                  
                   OnButtonContinue();
               }
-        };                
+        }; 
+        
         view.getContinueButton().addActionListener(onbtnContinue);   
         
         
@@ -90,6 +98,7 @@ public class Controller {
     	 
     	 model.incX();
     	 view.ShowContinueButton(false);
+    	
          timer.start();
      
     }
@@ -101,6 +110,7 @@ public class Controller {
         else{ model.setX(0);  ////back to start
               TotalFiles=model.GetAllFiles();
                view.SetProgressBarUpperBound(TotalFiles-1);
+               view.getValidateButton().setVisible(true);
                timer.stop();
              }
     }
