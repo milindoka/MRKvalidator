@@ -4,6 +4,8 @@ package mrk;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,9 +20,9 @@ public class View {
     private JTextField ExamField;
     private JTextField SubField;
     private JButton btnContinue;
-    private JLabel BlankLabel1;
+  //  private JLabel BlankLabel1;
     private JLabel Status;
-
+    private JPanel barpanel;
     
     public View(String text)
     {
@@ -34,17 +36,24 @@ public class View {
         jb=new JProgressBar(0,100);    
        Border border = BorderFactory.createTitledBorder("Progress...");
        
+       barpanel=new JPanel(new BorderLayout());
+       
+       barpanel.setSize(200,100);
        jb.setBorder(border);
        
-        jb.setBounds(60,80,180,90);         
-        jb.setValue(0);    
+      // jb.setBounds(0,80,480,90);   
+             jb.setValue(0);    
         jb.setStringPainted(true);    
-        
-        frame.getContentPane().add(jb);    
-        
-        BlankLabel1 = new JLabel(" ");
        
-        frame.getContentPane().add(BlankLabel1);
+        barpanel.add(jb,BorderLayout.NORTH);
+     //   BlankLabel1 = new JLabel("1 ");
+   //     barpanel.add(BlankLabel1,BorderLayout.SOUTH);
+        
+        frame.getContentPane().add(barpanel);    
+        
+       
+       
+        //frame.getContentPane().add(BlankLabel1);
         
         DivField = new JTextField();
         frame.getContentPane().add(DivField);

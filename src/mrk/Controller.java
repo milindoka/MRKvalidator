@@ -38,7 +38,7 @@ public class Controller {
     }
     
     
-    final Timer timer = new Timer(1000, new ActionListener() 
+    final Timer timer = new Timer(500, new ActionListener() 
     {
         @Override
         public void actionPerformed(ActionEvent e)
