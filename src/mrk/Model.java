@@ -20,7 +20,8 @@ public class Model {
     
     private String DIV[]={"A","B","C","D","E","F","G","H","I","J","K","L"};
     private  String EXAM[]={"U1","T1","U2","T2"};
-    private  String SUBJECT[]={"ENG","MAR","TAM","HIN","ITE","MAT","PHY","CHE","BIO","SEP","ECO","BKE","OCM","CS1","CS2","EL1","EL2","EVS","PTE"};
+    private  String SUBJECT[]={"ENG","MAR","TAM","HIN","ITE","MAT","PHY","CHE","BIO","SEP","ECO","BKE","OCM","CS1","CS2","EL1","EL2","EVS","PTE",
+                        	   "ENGOPP","MAROPP","TAMOPP","HINOPP","ITEOPP","MATOPP","PHYOPP","CHEOPP","BIOOPP","SEPOPP","ECOOPP","BKEOPP","OCMOPP","CS1OPP","CS2OPP","EL1OPP","EL2OPP"};
     
     private boolean FormatOk;
     
