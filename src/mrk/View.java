@@ -6,6 +6,7 @@ import javax.swing.border.Border;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -23,6 +24,7 @@ public class View {
   //  private JLabel BlankLabel1;
     private JLabel Status;
     private JPanel barpanel;
+    private Font MyFont;
     
     public View(String text)
     {
@@ -54,8 +56,10 @@ public class View {
        
        
         //frame.getContentPane().add(BlankLabel1);
+        MyFont = new Font("Liberation Serif", Font.PLAIN,40);
         
         DivField = new JTextField();
+        DivField.setFont(MyFont);
         frame.getContentPane().add(DivField);
         DivField.setColumns(10);
         DivField.addKeyListener(new KeyAdapter()
@@ -70,6 +74,7 @@ public class View {
         
         
         ExamField = new JTextField();
+        ExamField.setFont(MyFont);
         frame.getContentPane().add(ExamField);
         ExamField.setColumns(10);
         ExamField.addKeyListener(new KeyAdapter()
@@ -84,6 +89,7 @@ public class View {
         
         
         SubField = new JTextField();
+        SubField.setFont(MyFont);
         frame.getContentPane().add(SubField);
         SubField.setColumns(10);
         SubField.addKeyListener(new KeyAdapter()
