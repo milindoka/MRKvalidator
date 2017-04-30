@@ -116,7 +116,7 @@ public class View {
         btnStart = new JButton("Start Validation");        
         frame.getContentPane().add(btnStart);   
         
-        new FirstDialog(frame,"Hello",true);
+        new FirstDialog(frame);
         
         
     }
