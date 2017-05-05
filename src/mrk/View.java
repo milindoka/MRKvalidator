@@ -30,7 +30,7 @@ public class View {
     {
         frame = new JFrame("MRKvalidator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);           
-        frame.setSize(400,400);
+        frame.setSize(500,600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
@@ -116,7 +116,8 @@ public class View {
         btnStart = new JButton("Start Validation");        
         frame.getContentPane().add(btnStart);   
         
-        new FirstDialog(frame);
+       JDialog d= new FirstDialog(frame);
+    
         
         
     }
