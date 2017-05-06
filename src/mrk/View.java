@@ -25,7 +25,8 @@ public class View {
     private JLabel Status;
     private JPanel barpanel;
     private Font MyFont;
-    
+    private SelectExam se;
+    private String ExamName;
     public View(String text)
     {
         frame = new JFrame("MRKvalidator");
@@ -116,9 +117,12 @@ public class View {
         btnStart = new JButton("Start Validation");        
         frame.getContentPane().add(btnStart);   
         
-       JDialog d= new FirstDialog(frame);
-    
-        
+       //JDialog d= new FirstDialog(frame);
+       se=new SelectExam(); 
+       se.LoadPreferences();
+       ExamName=se.GetExam();
+      //  ExamName=se.SelectExam();
+       frame.setTitle(ExamName);
         
     }
 
