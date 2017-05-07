@@ -163,7 +163,8 @@ public class View {
         return btnSetExam;
     }
     
-    public JButton getSetRollSubjectButton(){
+    public JButton getSetRollSubjectButton()
+    {
         return btnSetRollSubjects;
     }
     

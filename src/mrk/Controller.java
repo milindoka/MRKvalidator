@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.Timer;
 
 public class Controller {
@@ -90,13 +92,82 @@ public class Controller {
         view.getSetExamButton().addActionListener(onbtnSetExam);
         
         
-       // se=new SelectExam(); 
-       // se.LoadPreferences();
-       // ExamName=se.GetExam();
-       //  ExamName=se.SelectExam();
-       // frame.setTitle(ExamName);
+        
+        onbtnSetRollSubjects = new ActionListener()
+        {
+              public void actionPerformed(ActionEvent actionEvent) 
+              {                  
+                  OnButtonSetRollSubjects();
+              }
+        }; 
+        
+        view.getSetRollSubjectButton().addActionListener(onbtnSetRollSubjects);
+        
+        
         
     } ////end of LinkView Controls
+    
+    
+    private void OnButtonSetRollSubjects()
+    { Object rows[][] = { 
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            
+            
+            
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+            { "A", "1-42","ENG-ECO-ORC-BKE-SEP-MAR" }, 
+            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
+            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
+            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" }
+            
+           };
+      Object cols[] = { "DIV", "ROLL","SUBJETS" };
+
+    JTable table = new JTable(rows, cols);
+   // JOptionPane.showConfirmDialog(null, new JScrollPane(table),null, JOptionPane.OK_CANCEL_OPTION,
+   // 		JOptionPane.PLAIN_MESSAGE);
+    	
+    
+    Object[] options = {"Save",
+    "Cancel"};
+int n = JOptionPane.showOptionDialog(null,
+		new JScrollPane(table),
+"Enter Roll and Subject Scheme",
+JOptionPane.YES_NO_OPTION,
+JOptionPane.PLAIN_MESSAGE,
+null,     //do not use a custom Icon
+options,  //the titles of buttons
+options[0]); //default button title
+
+    
+    
+    
+    
+    }
+    
     
     
     private void OnButtonSetExam()
