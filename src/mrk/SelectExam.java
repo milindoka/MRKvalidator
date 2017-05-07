@@ -38,7 +38,7 @@ public class SelectExam
 	public String GetExam(){ return ExamName; }
 	
 	public String SelectExam()
-    {   LoadPreferences();
+    {   //LoadPreferences();
     	//show(PrinterName);
     	ButtonGroup group = new ButtonGroup();
         ArrayList<String> ExamNames = new ArrayList<String>(); 
@@ -58,6 +58,11 @@ public class SelectExam
     	    group.add(buttons[i]);
     	    //buttons[i] = btn;
     	}
+    	
+        if(ExamName.contains("U1")) buttons[0].setSelected(true);
+        if(ExamName.contains("T1")) buttons[1].setSelected(true);
+        if(ExamName.contains("U2")) buttons[2].setSelected(true);
+        if(ExamName.contains("T2")) buttons[3].setSelected(true);
     	
         int res = JOptionPane.showConfirmDialog(null, buttons, "Select Current Exam", 
                 JOptionPane.OK_CANCEL_OPTION);

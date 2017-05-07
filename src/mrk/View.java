@@ -21,6 +21,9 @@ public class View {
     private JTextField ExamField;
     private JTextField SubField;
     private JButton btnContinue;
+    private JButton btnSetExam;
+    private JButton btnSetRollSubjects;
+    
   //  private JLabel BlankLabel1;
     private JLabel Status;
     private JPanel barpanel;
@@ -115,7 +118,15 @@ public class View {
         frame.getContentPane().add(Status);
         
         btnStart = new JButton("Start Validation");        
-        frame.getContentPane().add(btnStart);   
+        frame.getContentPane().add(btnStart);
+        
+        
+        btnSetExam = new JButton("Set Exam Name");
+        frame.getContentPane().add(btnSetExam);
+        //btnSetExam.setVisible(false);
+        
+        btnSetRollSubjects = new JButton("Set Roll and Subjects");
+        frame.getContentPane().add(btnSetRollSubjects);
         
        //JDialog d= new FirstDialog(frame);
        se=new SelectExam(); 
@@ -124,8 +135,16 @@ public class View {
       //  ExamName=se.SelectExam();
        frame.setTitle(ExamName);
         
-    }
+    }   ///end of view constructor
 
+    
+    public void SelectExam()
+    {ExamName=se.SelectExam();
+     se.SavePreferences();
+    frame.setTitle(ExamName);	
+    }
+    
+    
     public String getDivision() {return DivField.getText();}
     public String getExam() {return ExamField.getText();}
     public String getSubject() {return SubField.getText();}
@@ -137,6 +156,15 @@ public class View {
     
     public JButton getContinueButton(){
         return btnContinue;
+    }
+    
+    public JButton getSetExamButton()
+    {
+        return btnSetExam;
+    }
+    
+    public JButton getSetRollSubjectButton(){
+        return btnSetRollSubjects;
     }
     
     

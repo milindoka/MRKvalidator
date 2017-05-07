@@ -11,7 +11,7 @@ public class Controller {
 
     private Model model;
     private View view;
-    private ActionListener onbtnStart,onbtnContinue;
+    private ActionListener onbtnStart,onbtnContinue,onbtnSetExam,onbtnSetRollSubjects;
     private int TotalFiles=0;
    
     
@@ -51,7 +51,7 @@ public class Controller {
 
 
     
-    public void LinkViewControls()
+    public void LinkViewControls() /// this is called once in constructor of Main
     {        
         onbtnStart = new ActionListener()
         {
@@ -79,7 +79,29 @@ public class Controller {
         
         view.getContinueButton().addActionListener(onbtnContinue);   
         
+        onbtnSetExam = new ActionListener()
+        {
+              public void actionPerformed(ActionEvent actionEvent) 
+              {                  
+                  OnButtonSetExam();
+              }
+        }; 
         
+        view.getSetExamButton().addActionListener(onbtnSetExam);
+        
+        
+       // se=new SelectExam(); 
+       // se.LoadPreferences();
+       // ExamName=se.GetExam();
+       //  ExamName=se.SelectExam();
+       // frame.setTitle(ExamName);
+        
+    } ////end of LinkView Controls
+    
+    
+    private void OnButtonSetExam()
+    {view.SelectExam();
+    	
     }
     
     
