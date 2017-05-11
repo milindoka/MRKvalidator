@@ -32,8 +32,6 @@ public class RollSubDialog
 	            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
 	            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" }
 	            
-	           
-	            
 	           };
 	      Object cols[] = { "DIV", "ROLL","SUBJETS" };
 
@@ -94,13 +92,16 @@ public class RollSubDialog
 		
         if (n == JOptionPane.OK_OPTION)
               {
-        	  // show("Save");
-   
+        	 
+        	   table.getCellEditor().stopCellEditing();
+        	   ///Above statement takes care of refreshing last focused cell 
+        	 
         	   SaveRollSubjects();   ///as string
+        	   return RollSubList;
               }
-        else show("cancel");
-
-        return RollSubList;
+        else     
+        return "Cancel";
+       
     }
 
 
@@ -108,6 +109,8 @@ public class RollSubDialog
 	{ int i,j;
 	  RollSubList="";
 	  int totalrows=table.getRowCount();
+	  String Div=GetData(0,0);
+	  if(Div.length()!=1) { RollSubList="Error"; return; }
 	  RollSubList+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
 			  
 			  

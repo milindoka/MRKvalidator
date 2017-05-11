@@ -110,6 +110,7 @@ public class Controller {
     private void OnButtonSetRollSubjects()
     { RollSubDialog rsd=new RollSubDialog();
       String temp=rsd.SetRollSubjects();
+      
       show(temp);
     }
     
