@@ -5,6 +5,7 @@ import java.util.prefs.Preferences;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -22,27 +23,32 @@ public class RollSubDialog
 	public  String GetData(int row_index, int col_index)
 	{ return (String) table.getModel().getValueAt(row_index, col_index); }
 	
-	RollSubDialog() {};
+	
 
 	String RollSubList;
 	
 	 Object rows[][] = { 
 	            { "A", "1-42","ENG-ECO-ORC-BKE-MAT-ITE" }, 
 	            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
-	            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
-	            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" },
+	            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" }
 	            
-	            	            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
-	            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" },
-	            { "A", "102-120","ENG-ECO-ORC-BKE-MAT-HIN" }
+	           
 	            
 	           };
 	      Object cols[] = { "DIV", "ROLL","SUBJETS" };
 
-	    JTable table = new JTable(rows, cols);
-
+	      DefaultTableModel model = new DefaultTableModel(rows, cols);
+	    JTable table = new JTable(model);
+        
 	
-	
+	    RollSubDialog()
+	    {
+	    	DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+	    	
+	    	for(int i=0;i<30;i++)
+	        dtm.addRow(new Object[]{"", "",""});	
+	    };
+	 
    
 	public void SavePreferences()
 	{Preferences prefs = Preferences.userNodeForPackage(mrk.RollSubDialog.class);
@@ -89,7 +95,8 @@ public class RollSubDialog
         if (n == JOptionPane.OK_OPTION)
               {
         	  // show("Save");
-        	   RollSubList=GetData(2,2);
+   
+        	   SaveRollSubjects();   ///as string
               }
         else show("cancel");
 
@@ -97,4 +104,20 @@ public class RollSubDialog
     }
 
 
+	public void SaveRollSubjects()
+	{ int i,j;
+	  RollSubList="";
+	  int totalrows=table.getRowCount();
+	  RollSubList+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
+			  
+			  
+	  for( i=1;i<totalrows;i++)
+	  {   RollSubList+="#";
+		  RollSubList+=GetData(i,0)+"="+GetData(i,1)+"="+GetData(i,2);
+	  }
+	
+	
+	}
+	
+	
 }
