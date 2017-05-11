@@ -15,7 +15,6 @@ public class Controller {
     private View view;
     private ActionListener onbtnStart,onbtnContinue,onbtnSetExam,onbtnSetRollSubjects;
     private int TotalFiles=0;
-   
     
     
 ///////////////Temp Functions For Debugging    
@@ -110,7 +109,8 @@ public class Controller {
     
     private void OnButtonSetRollSubjects()
     { RollSubDialog rsd=new RollSubDialog();
-      rsd.SetRollSubjects();
+      String temp=rsd.SetRollSubjects();
+      show(temp);
     }
     
     

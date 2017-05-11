@@ -1,11 +1,8 @@
 package mrk;
 
-import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -14,15 +11,16 @@ import javax.swing.JTable;
 public class RollSubDialog 
 {
 
-	public static void show(String msg)
+	public  void show(String msg)
 	{JOptionPane.showMessageDialog(null, msg);}
-	public static void show(int msg)
-	{JOptionPane.showMessageDialog(null, msg);}
-
-	public static void show(long msg)
+	public  void show(int msg)
 	{JOptionPane.showMessageDialog(null, msg);}
 
-	
+	public void show(long msg)
+	{JOptionPane.showMessageDialog(null, msg);}
+
+	public  String GetData(int row_index, int col_index)
+	{ return (String) table.getModel().getValueAt(row_index, col_index); }
 	
 	RollSubDialog() {};
 
@@ -90,8 +88,8 @@ public class RollSubDialog
 		
         if (n == JOptionPane.OK_OPTION)
               {
-        	   show("Save");
-        	
+        	  // show("Save");
+        	   RollSubList=GetData(2,2);
               }
         else show("cancel");
 
