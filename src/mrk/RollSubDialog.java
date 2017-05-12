@@ -1,5 +1,6 @@
 package mrk;
 
+import java.awt.Font;
 import java.util.prefs.Preferences;
 
 import javax.swing.JOptionPane;
@@ -23,7 +24,7 @@ public class RollSubDialog
 	public  String GetData(int row_index, int col_index)
 	{ return (String) table.getModel().getValueAt(row_index, col_index); }
 	
-	
+	Font TNR16=new Font("Times New Roman", Font.PLAIN, 14);
 
 	String RollSubList;
 	
@@ -37,8 +38,8 @@ public class RollSubDialog
 
 	      DefaultTableModel model = new DefaultTableModel(rows, cols);
 	    JTable table = new JTable(model);
-        
-	
+	      // setFont(new Font("Serif", Font.BOLD, 20));        
+	  
 	    RollSubDialog()
 	    {
 	    	DefaultTableModel dtm = (DefaultTableModel) table.getModel();
@@ -75,7 +76,12 @@ public class RollSubDialog
     {   //LoadPreferences();
     	//show(PrinterName);
     
-		 
+		 table.setFont(TNR16);
+
+		 table.setRowHeight(20);
+		 table.getColumnModel().getColumn(0).setMaxWidth(25);
+		 table.getColumnModel().getColumn(1).setMaxWidth(90);
+		 table.getColumnModel().getColumn(2).setMinWidth(120);
 	    Object[] options = {"Save",
 	    "Cancel"};
 	       int n = JOptionPane.showOptionDialog(null,
@@ -88,7 +94,7 @@ public class RollSubDialog
 	      options[0]); 						///default button title
 		
 		
-		
+	      
 		
         if (n == JOptionPane.OK_OPTION)
               {
