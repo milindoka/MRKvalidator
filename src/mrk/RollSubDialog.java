@@ -1,12 +1,20 @@
 package mrk;
 
+import java.awt.Component;
 import java.awt.Font;
 import java.util.prefs.Preferences;
 
+import javax.swing.AbstractCellEditor;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.JTextComponent;
 
 
 
@@ -39,7 +47,7 @@ public class RollSubDialog
 	      DefaultTableModel model = new DefaultTableModel(rows, cols);
 	    JTable table = new JTable(model);
 	      // setFont(new Font("Serif", Font.BOLD, 20));        
-	  
+	    
 	    RollSubDialog()
 	    {
 	    	DefaultTableModel dtm = (DefaultTableModel) table.getModel();
@@ -82,7 +90,8 @@ public class RollSubDialog
 		 table.getColumnModel().getColumn(0).setMaxWidth(25);
 		 table.getColumnModel().getColumn(1).setMaxWidth(90);
 		 table.getColumnModel().getColumn(2).setMinWidth(120);
-	    Object[] options = {"Save",
+	     
+		 Object[] options = {"Save",
 	    "Cancel"};
 	       int n = JOptionPane.showOptionDialog(null,
 			new JScrollPane(table),         ///JTable as Message 
@@ -94,15 +103,15 @@ public class RollSubDialog
 	      options[0]); 						///default button title
 		
 		
-	      
-		
         if (n == JOptionPane.OK_OPTION)
               {
-        	 
+        	   
         	   table.getCellEditor().stopCellEditing();
         	   ///Above statement takes care of refreshing last focused cell 
+        	  
         	 
         	   SaveRollSubjects();   ///as string
+        	//   show(RollSubList);
         	   return RollSubList;
               }
         else     
@@ -112,14 +121,13 @@ public class RollSubDialog
 
 
 	public void SaveRollSubjects()
-	{ int i,j;
+	{ 
+	  int i,j;
 	  RollSubList="";
 	  int totalrows=table.getRowCount();
-	  String Div=GetData(0,0);
-	  if(Div.length()!=1) { RollSubList="Error"; return; }
+	  String div=GetData(0,0);
+	  if(div.length()!=1) { RollSubList="Error"; return; }
 	  RollSubList+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
-			  
-			  
 	  for( i=1;i<totalrows;i++)
 	  {   RollSubList+="#";
 		  RollSubList+=GetData(i,0)+"="+GetData(i,1)+"="+GetData(i,2);
@@ -128,5 +136,21 @@ public class RollSubDialog
 	
 	}
 	
+
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
 	
 }
+
+
+

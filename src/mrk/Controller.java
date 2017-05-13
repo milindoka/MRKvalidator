@@ -111,7 +111,8 @@ public class Controller {
     { RollSubDialog rsd=new RollSubDialog();
       String temp=rsd.SetRollSubjects();
       
-      show(temp);
+     show(temp);
+     //show("k");
     }
     
     

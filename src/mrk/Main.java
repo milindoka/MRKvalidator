@@ -11,8 +11,9 @@ public class Main
     public static void main(String[] args) 
     {  
     	
-    	/////////////////////////////////////KeyBoard Event Dispatcher ////////////
-    	
+    	///////////////////////All caps - KeyBoard Event Dispatcher ////////////
+    /*	Works but crashes at : table.getCellEditor().stopCellEditing();
+     *  in RollSubDialog
     	
     	  KeyboardFocusManager.getCurrentKeyboardFocusManager()
           .addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -29,7 +30,7 @@ public class Main
               return discardEvent;
             }
           });  	
-    	 
+    	*/ 
     	/////////////////////////////////////KeyBoard Event Dispatcher //////////// 	  
     	  
     	  
