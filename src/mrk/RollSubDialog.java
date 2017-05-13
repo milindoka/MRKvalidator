@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.util.prefs.Preferences;
 
 import javax.swing.AbstractCellEditor;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -46,14 +47,27 @@ public class RollSubDialog
 
 	      DefaultTableModel model = new DefaultTableModel(rows, cols);
 	    JTable table = new JTable(model);
-	      // setFont(new Font("Serif", Font.BOLD, 20));        
+	      // setFont(new Font("Serif", Font.BOLD, 20));  
+	  
 	    
-	    RollSubDialog()
+	    RollSubDialog() ////CONSTRUCTOR
 	    {
 	    	DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 	    	
 	    	for(int i=0;i<30;i++)
 	        dtm.addRow(new Object[]{"", "",""});	
+	
+	   	 table.setDefaultEditor(Object.class, new MyEditor());
+		 table.setFont(TNR16);
+		 
+		 table.setRowHeight(20);
+		 table.getColumnModel().getColumn(0).setMaxWidth(25);
+		 table.getColumnModel().getColumn(1).setMaxWidth(90);
+		 table.getColumnModel().getColumn(2).setMinWidth(120);
+	
+	    
+	    
+	    
 	    };
 	 
    
@@ -83,13 +97,6 @@ public class RollSubDialog
 	public String SetRollSubjects()
     {   //LoadPreferences();
     	//show(PrinterName);
-    
-		 table.setFont(TNR16);
-
-		 table.setRowHeight(20);
-		 table.getColumnModel().getColumn(0).setMaxWidth(25);
-		 table.getColumnModel().getColumn(1).setMaxWidth(90);
-		 table.getColumnModel().getColumn(2).setMinWidth(120);
 	     
 		 Object[] options = {"Save",
 	    "Cancel"};
@@ -137,16 +144,25 @@ public class RollSubDialog
 	}
 	
 
+////Inner Class For Forced Uppercase	
+	class MyEditor extends DefaultCellEditor {
+		  public MyEditor() {
+		    super(new JTextField());
+		  }
+
+		  public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
+		      int row, int column) {
+		    JTextField editor = (JTextField) super.getTableCellEditorComponent(table, value, isSelected,
+		        row, column);
+
+		    if (value != null)
+		      editor.setText(value.toString().toUpperCase());
+		  
+		    return editor;
+		  }
+		}
 	
-	
-	
-	
-		
-	
-	
-	
-	
-	
+/////end of inner class	
 	
 	
 	
