@@ -12,9 +12,9 @@ public class Main
     {  
     	
     	///////////////////////All caps - KeyBoard Event Dispatcher ////////////
-    /*	Works but crashes at : table.getCellEditor().stopCellEditing();
-     *  in RollSubDialog
-    	
+    /*	Works but sometime crashes at : table.getCellEditor().stopCellEditing();
+       in RollSubDialog
+    */	
     	  KeyboardFocusManager.getCurrentKeyboardFocusManager()
           .addKeyEventDispatcher(new KeyEventDispatcher() {
             public boolean dispatchKeyEvent(KeyEvent e) {
@@ -30,7 +30,7 @@ public class Main
               return discardEvent;
             }
           });  	
-    	*/ 
+    	 
     	/////////////////////////////////////KeyBoard Event Dispatcher //////////// 	  
     	  
     	  

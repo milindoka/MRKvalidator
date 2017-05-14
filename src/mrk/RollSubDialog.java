@@ -57,9 +57,9 @@ public class RollSubDialog
 	    	for(int i=0;i<30;i++)
 	        dtm.addRow(new Object[]{"", "",""});	
 	
-	   	 table.setDefaultEditor(Object.class, new MyEditor());
+	  // 	 table.setDefaultEditor(Object.class, new MyEditor());
 		 table.setFont(TNR16);
-		 
+		  
 		 table.setRowHeight(20);
 		 table.getColumnModel().getColumn(0).setMaxWidth(25);
 		 table.getColumnModel().getColumn(1).setMaxWidth(90);
@@ -112,8 +112,9 @@ public class RollSubDialog
 		
         if (n == JOptionPane.OK_OPTION)
               {
-        	   
-        	   table.getCellEditor().stopCellEditing();
+        	if (table.isEditing())
+			    table.getCellEditor().stopCellEditing();
+        	 
         	   ///Above statement takes care of refreshing last focused cell 
         	  
         	 
@@ -136,17 +137,20 @@ public class RollSubDialog
 	  if(div.length()!=1) { RollSubList="Error"; return; }
 	  RollSubList+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
 	  for( i=1;i<totalrows;i++)
-	  {   RollSubList+="#";
-		  RollSubList+=GetData(i,0)+"="+GetData(i,1)+"="+GetData(i,2);
+	  {   div=GetData(i,0);
+	      if(div.length()!=1) continue;
+		  RollSubList+="#";
+		  RollSubList+=div+"="+GetData(i,1)+"="+GetData(i,2);
 	  }
 	
 	
 	}
-	
+/*	
 
 ////Inner Class For Forced Uppercase	
 	class MyEditor extends DefaultCellEditor {
-		  public MyEditor() {
+		  public MyEditor() 
+		  {
 		    super(new JTextField());
 		  }
 
@@ -164,7 +168,7 @@ public class RollSubDialog
 	
 /////end of inner class	
 	
-	
+	*/
 	
 }
 
