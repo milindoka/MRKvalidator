@@ -12,9 +12,24 @@ import javax.swing.table.DefaultTableModel;
 
 public class RollSubDialog 
 {
-	private String RollSubString;
+	private String RollSubString="A=1-42=ENG-ECO-ORC-BKE-MAT-ITE#"+
+								 "A=44-62=ENG-ECO-ORC-BKE-MAT-MAR#"+
+								 "A=63-101=ENG-ECO-ORC-BKE-SEP-HIN#"+
+								 "A=102-120=ENG-ECO-ORC-BKE-SEP-MAR#"+
+								 "B=141-160=ENG-ECO-ORC-BKE-MAT-HIN";
+                               
+                                 
+	           
 
-	
+	public void clearTable(final JTable table)
+	   {
+		   for (int i = 0; i < table.getRowCount(); i++)
+		      for(int j = 0; j < table.getColumnCount(); j++)
+		      {
+		          table.setValueAt("", i, j);
+		      }
+		}
+		
 	
 	public String GetRollSubString() {return RollSubString;}
 	
@@ -33,13 +48,8 @@ public class RollSubDialog
 
 
 	
-	 Object rows[][] = { 
-	            { "A", "1-42","ENG-ECO-ORC-BKE-MAT-ITE" }, 
-	            { "A", "44-62","ENG-ECO-ORC-BKE-SEP-HIN" }, 
-	            { "A", "63-101","ENG-ECO-ORC-BKE-MAT-MAR" }
-	            
-	           };
-	      Object cols[] = { "DIV", "ROLL","SUBJETS" };
+	 Object rows[][] = {  { "", "","" } };
+	 Object cols[] = { "DIV", "ROLL","SUBJETS" };
 
 	      DefaultTableModel model = new DefaultTableModel(rows, cols);
 	    JTable table = new JTable(model);
@@ -50,7 +60,7 @@ public class RollSubDialog
 	    {
 	    	DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 	    	
-	    	for(int i=0;i<30;i++)
+	    	for(int i=0;i<50;i++)
 	        dtm.addRow(new Object[]{"", "",""});	
 	
 	  // 	 table.setDefaultEditor(Object.class, new MyEditor());
@@ -61,7 +71,7 @@ public class RollSubDialog
 		 table.getColumnModel().getColumn(1).setMaxWidth(90);
 		 table.getColumnModel().getColumn(2).setMinWidth(120);
 	
-	    
+	     
 	    
 	    
 	    };
@@ -93,7 +103,8 @@ public class RollSubDialog
 	public String SetRollSubjects()
     {   //LoadPreferences();
     	//show(PrinterName);
-	     
+	    LoadFromString(); 
+		
 		 Object[] options = {"Save",
 	    "Cancel"};
 	       int n = JOptionPane.showOptionDialog(null,
@@ -114,8 +125,10 @@ public class RollSubDialog
         	   ///Above statement takes care of refreshing last focused cell 
         	  
         	 
-        	   SaveRollSubjects();   ///as string
-        	//   show(RollSubString);
+        	   SaveToString();   ///Save Roll Subjects to RollSubString
+        	
+        	   SavePreferences(); ///Save RollSubString to disk
+        	   
         	   return RollSubString;
               }
         else     
@@ -124,9 +137,9 @@ public class RollSubDialog
     }
 
 
-	public void SaveRollSubjects()
+	public void SaveToString() ///Save Roll Subjects to RollSubString
 	{ 
-	  int i,j;
+	  int i;
 	  RollSubString="";
 	  int totalrows=table.getRowCount();
 	  String div=GetData(0,0);
@@ -138,7 +151,27 @@ public class RollSubDialog
 		  RollSubString+="#";
 		  RollSubString+=div+"="+GetData(i,1)+"="+GetData(i,2);
 	  }
-	
+	  
+	} 
+	   
+	    public void SetData(Object obj, int row_index, int col_index)
+    {  table.getModel().setValueAt(obj,row_index,col_index);  }
+
+	  
+	  public void LoadFromString() ///
+		{ String temp1[],temp2[];
+		  int i;
+		  if(!RollSubString.contains("#")) return; //if empty or no #
+		  temp1=RollSubString.split("#");
+		  for(i=0;i<temp1.length;i++)
+		  { temp2=temp1[i].split("=");
+		    if(temp2.length!=3) { show("Error in ="); return; }
+		    SetData(temp2[0],i,0);
+		    SetData(temp2[1],i,1);
+		    SetData(temp2[2],i,2);
+		  }
+		} 
+		  
 	
 	}
 /*	
@@ -166,7 +199,8 @@ public class RollSubDialog
 	
 	*/
 	
-}
+
+
 
 
 

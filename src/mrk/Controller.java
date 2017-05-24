@@ -15,7 +15,7 @@ public class Controller {
     private View view;
     private ActionListener onbtnStart,onbtnContinue,onbtnSetExam,onbtnSetRollSubjects;
     private int TotalFiles=0;
-    
+    private RollSubDialog rsd;    
     
 ///////////////Temp Functions For Debugging    
     public void show(String msg) ///for debugging
@@ -31,6 +31,8 @@ public class Controller {
     {
         this.model = model;
         this.view = view;
+        rsd = new RollSubDialog();
+        rsd.LoadPreferences();
          //String JarFilePath=model.getJarPath();
 	   
 	     //System.out.println(JarFilePath);
@@ -108,10 +110,10 @@ public class Controller {
     
     
     private void OnButtonSetRollSubjects()
-    { RollSubDialog rsd=new RollSubDialog();
+    { 
       String temp=rsd.SetRollSubjects();
       
-     show(temp);
+    // show(temp);
      //show("k");
     }
     

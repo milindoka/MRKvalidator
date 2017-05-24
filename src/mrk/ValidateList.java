@@ -20,7 +20,7 @@ public class ValidateList
 	 
 	 public String ValidateArray(ArrayList<String> Arr)
 	    {  String Error="";
-		  // Roll and Marks separated by :
+		  // Roll and Marks separated by ":"
 		  // Return Error message such as First and Last Roll Do not Match
 		 
 		 
