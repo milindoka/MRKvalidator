@@ -1,27 +1,23 @@
 package mrk;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.util.prefs.Preferences;
 
-import javax.swing.AbstractCellEditor;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.JTextComponent;
 
 
 
 public class RollSubDialog 
 {
+	private String RollSubString;
 
+	
+	
+	public String GetRollSubString() {return RollSubString;}
+	
 	public  void show(String msg)
 	{JOptionPane.showMessageDialog(null, msg);}
 	public  void show(int msg)
@@ -35,7 +31,7 @@ public class RollSubDialog
 	
 	Font TNR16=new Font("Times New Roman", Font.PLAIN, 14);
 
-	String RollSubList;
+
 	
 	 Object rows[][] = { 
 	            { "A", "1-42","ENG-ECO-ORC-BKE-MAT-ITE" }, 
@@ -77,7 +73,7 @@ public class RollSubDialog
 	// Preference key name
 	final String PREF_NAME = "ExamPref";
 	// Set the value of the preference
-	prefs.put(PREF_NAME, RollSubList);
+	prefs.put(PREF_NAME, RollSubString);
 		
 	}
 
@@ -87,12 +83,12 @@ public class RollSubDialog
 
 	// Preference key name
 	final String PREF_NAME = "ExamPref";
-	RollSubList= prefs.get(PREF_NAME,RollSubList); // "a string"
+	RollSubString= prefs.get(PREF_NAME,RollSubString); // "a string"
 	
 	}
 
 	
-	public String GetRollSubjectString(){ return RollSubList; }
+	public String GetRollSubjectString(){ return RollSubString; }
 	
 	public String SetRollSubjects()
     {   //LoadPreferences();
@@ -119,8 +115,8 @@ public class RollSubDialog
         	  
         	 
         	   SaveRollSubjects();   ///as string
-        	//   show(RollSubList);
-        	   return RollSubList;
+        	//   show(RollSubString);
+        	   return RollSubString;
               }
         else     
         return "Cancel";
@@ -131,16 +127,16 @@ public class RollSubDialog
 	public void SaveRollSubjects()
 	{ 
 	  int i,j;
-	  RollSubList="";
+	  RollSubString="";
 	  int totalrows=table.getRowCount();
 	  String div=GetData(0,0);
-	  if(div.length()!=1) { RollSubList="Error"; return; }
-	  RollSubList+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
+	  if(div.length()!=1) { RollSubString="Error"; return; }
+	  RollSubString+=GetData(0,0)+"="+GetData(0,1)+"="+GetData(0,2);
 	  for( i=1;i<totalrows;i++)
 	  {   div=GetData(i,0);
 	      if(div.length()!=1) continue;
-		  RollSubList+="#";
-		  RollSubList+=div+"="+GetData(i,1)+"="+GetData(i,2);
+		  RollSubString+="#";
+		  RollSubString+=div+"="+GetData(i,1)+"="+GetData(i,2);
 	  }
 	
 	
