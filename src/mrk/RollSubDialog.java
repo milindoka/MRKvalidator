@@ -20,7 +20,7 @@ public class RollSubDialog
                                
                                  
 	           
-
+/*
 	public void clearTable(final JTable table)
 	   {
 		   for (int i = 0; i < table.getRowCount(); i++)
@@ -29,7 +29,7 @@ public class RollSubDialog
 		          table.setValueAt("", i, j);
 		      }
 		}
-		
+	*/	
 	
 	public String GetRollSubString() {return RollSubString;}
 	
@@ -81,7 +81,7 @@ public class RollSubDialog
 	{Preferences prefs = Preferences.userNodeForPackage(mrk.RollSubDialog.class);
 
 	// Preference key name
-	final String PREF_NAME = "ExamPref";
+	final String PREF_NAME = "RollSubPref";
 	// Set the value of the preference
 	prefs.put(PREF_NAME, RollSubString);
 		
@@ -92,7 +92,7 @@ public class RollSubDialog
 	{Preferences prefs = Preferences.userNodeForPackage(mrk.RollSubDialog.class);
 
 	// Preference key name
-	final String PREF_NAME = "ExamPref";
+	final String PREF_NAME = "RollSubPref";
 	RollSubString= prefs.get(PREF_NAME,RollSubString); // "a string"
 	
 	}

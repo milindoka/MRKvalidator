@@ -103,8 +103,7 @@ public class Controller {
         }; 
         
         view.getSetRollSubjectButton().addActionListener(onbtnSetRollSubjects);
-        
-        
+               
         
     } ////end of LinkView Controls
     
