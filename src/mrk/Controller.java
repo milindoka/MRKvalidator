@@ -15,7 +15,8 @@ public class Controller {
     private View view;
     private ActionListener onbtnStart,onbtnContinue,onbtnSetExam,onbtnSetRollSubjects;
     private int TotalFiles=0;
-    private RollSubDialog rsd;    
+    private RollSubDialog rsd;  
+    private ValidateList vl;
     
 ///////////////Temp Functions For Debugging    
     public void show(String msg) ///for debugging
@@ -32,6 +33,7 @@ public class Controller {
         this.model = model;
         this.view = view;
         rsd = new RollSubDialog();
+        vl=new ValidateList();
         rsd.LoadPreferences();
          //String JarFilePath=model.getJarPath();
 	   
@@ -59,14 +61,8 @@ public class Controller {
         onbtnStart = new ActionListener()
         {
               public void actionPerformed(ActionEvent actionEvent) 
-              {   model.setX(0);  ////Start from index 0
-                  TotalFiles=model.GetAllFiles();
-                  view.SetProgressBarUpperBound(TotalFiles-1);  
-                  view.ShowContinueButton(false);
-                  
-                  timer.start();
-                  view.getValidateButton().setVisible(false);
-                  
+              { 
+                  OnButtonStart();
               }
         };                
         view.getValidateButton().addActionListener(onbtnStart);  
@@ -122,6 +118,20 @@ public class Controller {
     {view.SelectExam();
     	
     }
+ 
+    private void OnButtonStart()
+    {
+    model.setX(0);  ////Start from index 0
+    TotalFiles=model.GetAllFiles();
+    view.SetProgressBarUpperBound(TotalFiles-1);  
+    view.ShowContinueButton(false);
+    
+    timer.start();
+    view.getValidateButton().setVisible(false);
+    String temp=rsd.GetRollSubjectString();
+    vl.SetParameters(temp);   
+    }
+    
     
     
     private void OnButtonContinue()
