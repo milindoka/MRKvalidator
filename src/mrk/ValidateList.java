@@ -71,28 +71,22 @@ public class ValidateList
 	       {
 		     if(Div.get(i).indexOf(c)>=0) 
 		    { ///c ontains in Div, hence equal strings
-	    	   IntPair ep=new IntPair();//= new IntPair();
-		       ep.Set(Left.get(i),Right.get(i));
-		       cs.put(c,ep);
-		       break;
+		    	IntPair temp=cs.get(c) ;
+		    	if(temp!=null) 
+		    	{
+	    	      IntPair ep=new IntPair();//= new IntPair();
+		          ep.Set(temp.getx(),Right.get(i));
+		          cs.put(c,ep);
+		    	}
+		    	else 
+		    	{ IntPair ep=new IntPair();//= new IntPair();
+		    	  ep.Set(Left.get(i),Right.get(i));
+		    	  cs.put(c,ep);
+		    	}
+		      
 		    }
-		  
 	       }
-		  
-		  
 	  }
-	  
-	  
-	  
-		//IntPair ep=new IntPair(1,120);
-		//ep.Set(1,120);
-		
-	   // cs.put('A', ep);
-	   // IntPair ep1=new IntPair(121,140);
-	    
-	  //  ep1.Set(121,240);
-	  //cs.put('B',ep1);
-	  
 	    
 	    // Get a set of the entries
 	      Set set = cs.entrySet();
