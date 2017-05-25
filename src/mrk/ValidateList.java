@@ -9,6 +9,8 @@ import java.util.Set;
 
 import javax.swing.JOptionPane;
 
+import mrk.ValidateList.IntPair;
+
 public class ValidateList
 {    int FirstRoll;
 	 int LastRoll;
@@ -22,8 +24,6 @@ public class ValidateList
 	 private ArrayList<String>  Subjects = new ArrayList<String>();
 	 
 	 HashMap<Character, IntPair> cs = new HashMap<Character, IntPair>();
-
-	
 	 
 	 
 	 
@@ -54,7 +54,7 @@ public class ValidateList
 	  
 	//  for(char c='A';c<='Z';c++)
 		  
-	  
+	/*  
 	  
 	  
 	  for(i=0;i<Div.size();i++)
@@ -64,13 +64,34 @@ public class ValidateList
 		  System.out.println(Subjects.get(i));
 		  }
 		  
+		*/
+	  
+	  for(char c='A';c<='Z';c++)
+	  {for(i=0;i<Div.size();i++)
+	       {
+		     if(Div.get(i).indexOf(c)>=0) 
+		    { ///c ontains in Div, hence equal strings
+	    	   IntPair ep=new IntPair();//= new IntPair();
+		       ep.Set(Left.get(i),Right.get(i));
+		       cs.put(c,ep);
+		       break;
+		    }
 		  
-		IntPair ep=new IntPair();
-		ep.Set(1,120);
+	       }
+		  
+		  
+	  }
+	  
+	  
+	  
+		//IntPair ep=new IntPair(1,120);
+		//ep.Set(1,120);
 		
-	    cs.put('A', ep);
-	    ep.Set(121,240);
-	    cs.put('B',ep);
+	   // cs.put('A', ep);
+	   // IntPair ep1=new IntPair(121,140);
+	    
+	  //  ep1.Set(121,240);
+	  //cs.put('B',ep1);
 	  
 	    
 	    // Get a set of the entries
@@ -108,7 +129,7 @@ public class ValidateList
 		  
 		   int x;
 		   int y;
-		 // IntPair(int x, int y) {this.x=x;this.y=y;}
+		  //IntPair(int x, int y) {this.x=x;this.y=y;}
 		  void Set(int x,int y) {this.x=x;this.y=y;}
 		  int getx(){ return x;}
 		  int gety(){ return y;}
