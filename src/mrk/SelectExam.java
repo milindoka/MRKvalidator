@@ -12,7 +12,7 @@ public class SelectExam
 {
    SelectExam() {};
 
-	String ExamName;
+	String ExamName="U1";
    
 	public void SavePreferences()
 	{Preferences prefs = Preferences.userNodeForPackage(mrk.SelectExam.class);

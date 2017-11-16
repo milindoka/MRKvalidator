@@ -17,6 +17,8 @@ public class Model {
     private ArrayList<String> pathArray = new ArrayList<String>(); //array containing full paths
     private ArrayList<String> nameArray = new ArrayList<String>(); //array containing file names only
     private ArrayList<String> strArray = new ArrayList<String>(); //array containing marklist data
+    private ArrayList<String> rollArray=new ArrayList<String>();   //array Containg roll
+    private ArrayList<String> markArray=new ArrayList<String>();   //array Containg roll
     
     private String DIV[]={"A","B","C","D","E","F","G","H","I","J","K","L"};
     private  String EXAM[]={"U1","T1","U2","T2"};
@@ -25,7 +27,7 @@ public class Model {
     
     private boolean FormatOk;
     
-    private String Division,Examination, Subject, Examiner;
+    private String Division,Examination, Subject, Examiner,Date,MaxMarks;
     
     public Model()
     {
@@ -152,6 +154,18 @@ public class Model {
     	
     	stemp=strArray.get(18+3*TotalSets); temp=stemp.split(":");
     	Examination=temp[1].trim();
+    	
+    	stemp=strArray.get(19+3*TotalSets); temp=stemp.split(":");
+    	MaxMarks=temp[1].trim();
+    	stemp=strArray.get(20+3*TotalSets); temp=stemp.split(":");
+    	Date=temp[1].trim();
+
+		for(int i=28+3*TotalSets;i<strArray.size();i++) 
+		{
+		stemp=strArray.get(i); temp=stemp.split(":");
+    	rollArray.add(temp[0].trim());markArray.add(temp[1].trim());
+		
+		}
 
     	
     }

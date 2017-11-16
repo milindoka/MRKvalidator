@@ -102,7 +102,12 @@ public class ValidateList
 	         System.out.println(pp.x);
 	         System.out.println(pp.y);
 	      }
-	   
+	      
+	      IntPair testpair=new IntPair();//= new IntPair();
+	      testpair=(IntPair) cs.get('A');
+	      System.out.println(testpair.x);
+	      System.out.println(testpair.y);
+	
 	 }
 	 
 	
