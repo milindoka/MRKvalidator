@@ -174,6 +174,9 @@ public class Controller {
      if(model.InOneTwoThreeFormat()) { Status="Status : Ok"; model.incX();}
      else { Status="Status : Rectify and Continue"; view.ShowContinueButton(true); timer.stop();}     
      view.UpdateFromModel(model.getFnem(currentfileindex),model.getDiv(),model.getExam(),model.getSub(),Status);
+     
+     model.ExamineEachRoll();
+     
      view.setProgressBarPercent(currentfileindex);
      	
     }

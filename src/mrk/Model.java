@@ -9,6 +9,8 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Model {
     private int TotalMarklists;
    
@@ -28,6 +30,20 @@ public class Model {
     private boolean FormatOk;
     
     private String Division,Examination, Subject, Examiner,Date,MaxMarks;
+
+    
+//////////Helper Functions ////////////////////////////////  
+	public static void show(String msg)
+	{JOptionPane.showMessageDialog(null, msg);}
+	public static void show(int msg)
+	{JOptionPane.showMessageDialog(null, msg);}
+	
+	public static void show(long msg)
+	{JOptionPane.showMessageDialog(null, msg);}
+//////////Helper Functions ///////////////////////////////////
+    
+    
+    
     
     public Model()
     {
@@ -112,6 +128,9 @@ public class Model {
     
     public void LoadMarkListFileToStrArray(int currentindex)
     {       strArray.removeAll(strArray);
+    		markArray.removeAll(markArray);
+    		rollArray.removeAll(rollArray);
+    
         	BufferedReader reader=null;
     		try {
     			reader = new BufferedReader(new FileReader(pathArray.get(currentindex)));
@@ -224,5 +243,13 @@ public class Model {
     	
     }
     
+    
+    public void ExamineEachRoll()
+    {
+    	for(int i=0;i<markArray.size();i++)
+    	{
+    		if(markArray.get(i).contains("AB")) show(rollArray.get(i)+":"+markArray.get(i));
+    	}
+    }
     
 }

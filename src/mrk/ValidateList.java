@@ -15,8 +15,8 @@ public class ValidateList
 {    int FirstRoll;
 	 int LastRoll;
 	 
-	 
-	 
+	 ////Scheme table variables 
+	 //// filled by setparameters
 	 
 	 private ArrayList<String>  Div = new ArrayList<String>();
 	 private ArrayList<Integer> Left = new ArrayList<Integer>();
